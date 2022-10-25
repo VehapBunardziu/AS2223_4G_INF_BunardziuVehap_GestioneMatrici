@@ -132,8 +132,9 @@ namespace AS2223_4G_INF_BunardziuVehap_GestioneMatrici
         public double CalcolaMinMaxMedio(ref int min, ref int max)
         {
             double medio = 0;
-
+            int sommaValoriMatrice = 0;
             max = mat[0, 0];
+            min = mat[0, 0];
             for(int i = 0; i < mat.GetLength(0); i++)
             {
                 for(int j = 0; j < mat.GetLength(1); j++)
@@ -142,9 +143,17 @@ namespace AS2223_4G_INF_BunardziuVehap_GestioneMatrici
                     {
                         max = mat[i, j];
                     }
+                    if (min > mat[i,j])
+                    {
+                        min = mat[i, j];
+                    }
+
+                    sommaValoriMatrice = sommaValoriMatrice + mat[i, j];
                 }
             }
+            int areaMatrice = mat.GetLength(0) * mat.GetLength(1);
 
+            medio = sommaValoriMatrice / areaMatrice;
 
             return medio;
         }
@@ -157,7 +166,7 @@ namespace AS2223_4G_INF_BunardziuVehap_GestioneMatrici
         /// <returns></returns>
         public int GetValue(int riga, int colonna)
         {
-            return 0;
+            return mat[riga,colonna];
         }
     }
 }
