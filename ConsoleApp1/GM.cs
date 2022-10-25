@@ -18,16 +18,18 @@ namespace AS2223_4G_INF_BunardziuVehap_GestioneMatrici
         /// Istanzia una matrice quadra di dimensione lato
         /// </summary>
         /// <param name="lato"></param>
-        public GestoreMatrice(int lato)
+        public GM(int lato)
         {
+            mat = new int[lato, lato];
         }
 
         /// <summary>
         /// Istanzia e carica la matrice con la matrice passata come parametro
         /// </summary>
         /// <param name="mat"></param>
-        public GestoreMatrice(int[,] mat)
+        public GM(int[,] mat)
         {
+            this.mat = mat;
         }
 
         /// <summary>
@@ -37,6 +39,14 @@ namespace AS2223_4G_INF_BunardziuVehap_GestioneMatrici
         /// <param name="maxValue"></param>
         public void CaricaMatrice(int minValue, int maxValue)
         {
+            Random rand = new Random();
+            for(int i = 0; i < mat.GetLength(0); i++)
+            {
+                for(int j = 0; j < mat.GetLength(1); j++)
+                {
+                    mat[i, j] = rand.Next(minValue, maxValue+1);
+                }
+            }
         }
 
         /// <summary>
@@ -44,6 +54,14 @@ namespace AS2223_4G_INF_BunardziuVehap_GestioneMatrici
         /// </summary>
         public void StampaMatrice()
         {
+            for (int i = 0; i < mat.GetLength(0); i++)
+            {
+                for (int j = 0; j < mat.GetLength(1); j++)
+                {
+                    Console.Write($"{mat[i,j]}\t ");
+                }
+                Console.WriteLine();
+            }
         }
 
         /// <summary>
