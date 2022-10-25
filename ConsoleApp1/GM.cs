@@ -62,6 +62,7 @@ namespace AS2223_4G_INF_BunardziuVehap_GestioneMatrici
                 }
                 Console.WriteLine();
             }
+            Console.WriteLine();
         }
 
         /// <summary>
@@ -85,6 +86,7 @@ namespace AS2223_4G_INF_BunardziuVehap_GestioneMatrici
             {
                 Console.WriteLine($"{mat[0, i]}");
             }
+            Console.WriteLine();
         }
 
         /// <summary>
@@ -93,6 +95,12 @@ namespace AS2223_4G_INF_BunardziuVehap_GestioneMatrici
         /// <returns></returns>
         public void InvertiPrimaUltimaColonna()
         {
+            for(int i = 0; i < mat.GetLength(0); i++)
+            {
+                int temp = mat[i, mat.GetLength(1) - 1];
+                mat[i, mat.GetLength(1) - 1] = mat[i, 0];
+                mat[i, 0] = temp;
+            }
         }
 
         /// <summary>
@@ -103,7 +111,16 @@ namespace AS2223_4G_INF_BunardziuVehap_GestioneMatrici
         public int ContaValore(int valoreDaCercare)
         {
             int nValori = 0;
-
+            for(int i = 0; i < mat.GetLength(0); i++)
+            {
+                for(int j = 0; j < mat.GetLength(1); j++)
+                {
+                    if(mat[i, j] == valoreDaCercare)
+                    {
+                        nValori++;
+                    }
+                }
+            }
             return nValori;
         }
 
@@ -115,6 +132,18 @@ namespace AS2223_4G_INF_BunardziuVehap_GestioneMatrici
         public double CalcolaMinMaxMedio(ref int min, ref int max)
         {
             double medio = 0;
+
+            max = mat[0, 0];
+            for(int i = 0; i < mat.GetLength(0); i++)
+            {
+                for(int j = 0; j < mat.GetLength(1); j++)
+                {
+                    if (mat[i,j] > max)
+                    {
+                        max = mat[i, j];
+                    }
+                }
+            }
 
 
             return medio;
